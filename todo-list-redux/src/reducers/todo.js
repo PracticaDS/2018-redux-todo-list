@@ -1,11 +1,5 @@
 import { ADD_ITEM, REMOVE_ITEM, TOGGLE_DONE } from '../actions/todo'
 
-const Filters = {
-  ALL: 'all',
-  DONE: 'done',
-  UNDONE: 'undone'
-}
-
 const initialState = {
   items: [],
 }

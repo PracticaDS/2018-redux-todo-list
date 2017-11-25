@@ -1,6 +1,7 @@
 import React from 'react'
 import List from 'material-ui/List'
 import TodoListItem from './TodoListItem'
+import AddTodoListItem from './AddTodoListItem'
 
 export default function TodoList(props) {
   const items = [
@@ -16,6 +17,7 @@ export default function TodoList(props) {
           <TodoListItem key={item.id} item={item} />
         ))}
       </List>
+      <AddTodoListItem />
     </div>
   )
 }

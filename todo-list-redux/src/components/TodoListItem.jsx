@@ -1,8 +1,8 @@
 import React from 'react'
-import List, { ListItem, ListItemSecondaryAction, ListItemText } from 'material-ui/List'
+import { ListItem, ListItemSecondaryAction, ListItemText } from 'material-ui/List'
 import Checkbox from 'material-ui/Checkbox'
 import IconButton from 'material-ui/IconButton'
-import CommentIcon from 'material-ui-icons/Comment'
+import DeleteIcon from 'material-ui-icons/Delete'
 
 export default function TodoListItem({ item }) {
   return (
@@ -10,8 +10,8 @@ export default function TodoListItem({ item }) {
       <Checkbox tabIndex={-1} disableRipple />
       <ListItemText primary={item.text} />
       <ListItemSecondaryAction>
-        <IconButton aria-label="Comments">
-          <CommentIcon />
+        <IconButton aria-label="Delete">
+          <DeleteIcon />
         </IconButton>
       </ListItemSecondaryAction>
     </ListItem>

@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 import TodoList from './components/TodoList'
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 import { purple, green } from 'material-ui/colors'
@@ -23,9 +22,9 @@ export default class App extends Component {
           <header className="App-header">
             <h1 className="App-title">Lista de Pendientes</h1>
           </header>
-          <p className="App-intro">
+          <div className="App-intro">
             <TodoList />
-          </p>
+          </div>
         </div>
       </MuiThemeProvider>
     )
