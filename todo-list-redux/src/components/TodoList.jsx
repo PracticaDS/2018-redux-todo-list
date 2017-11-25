@@ -1,8 +1,6 @@
 import React from 'react'
-import List, { ListItem, ListItemSecondaryAction, ListItemText } from 'material-ui/List'
-import Checkbox from 'material-ui/Checkbox'
-import IconButton from 'material-ui/IconButton'
-import CommentIcon from 'material-ui-icons/Comment'
+import List from 'material-ui/List'
+import TodoListItem from './TodoListItem'
 
 export default function TodoList(props) {
   const items = [
@@ -19,19 +17,5 @@ export default function TodoList(props) {
         ))}
       </List>
     </div>
-  )
-}
-
-function TodoListItem({ item }) {
-  return (
-    <ListItem dense>
-      <Checkbox tabIndex={-1} disableRipple />
-      <ListItemText primary={item.text} />
-      <ListItemSecondaryAction>
-        <IconButton aria-label="Comments">
-          <CommentIcon />
-        </IconButton>
-      </ListItemSecondaryAction>
-    </ListItem>
   )
 }
