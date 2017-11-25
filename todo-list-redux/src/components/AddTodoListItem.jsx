@@ -1,10 +1,8 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import Button from 'material-ui/Button'
 import TextField from 'material-ui/TextField'
-import { addItem } from '../actions/todo'
 
-class AddTodoListItem extends React.Component {
+export default class AddTodoListItem extends React.Component {
   
   state = {
     text: ''
@@ -32,7 +30,6 @@ class AddTodoListItem extends React.Component {
   addItem = () => {
     const { addItemAction } = this.props
     addItemAction(this.state.text)
+    this.setState({ text: '' })
   }
 }
-
-export default connect(() => ({}), ({ addItemAction: addItem }))(AddTodoListItem)

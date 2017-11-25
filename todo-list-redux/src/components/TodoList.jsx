@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import List from 'material-ui/List'
 import TodoListItem from './TodoListItem'
-import AddTodoListItem from './AddTodoListItem'
+import AddTodoListItem from '../containers/AddTodoListItem'
 
 class TodoList extends React.Component {
   
