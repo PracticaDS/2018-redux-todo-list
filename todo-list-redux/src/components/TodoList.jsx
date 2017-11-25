@@ -1,23 +1,27 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import List from 'material-ui/List'
 import TodoListItem from './TodoListItem'
 import AddTodoListItem from './AddTodoListItem'
 
-export default function TodoList(props) {
-  const items = [
-    { id: 1, text: 'Ponerse las gotas para los ojos', listo: false  },
-    { id: 2, text: 'Pedir turno con el médico', listo: false },
-    { id: 3, text: 'Arreglar la cocina', listo: false },
-  ]
+class TodoList extends React.Component {
+  
+  render() {
+    const { items } = this.props
 
-  return (
-    <div>
-      <List>
-        {items.map(item => (
-          <TodoListItem key={item.id} item={item} />
-        ))}
-      </List>
-      <AddTodoListItem />
-    </div>
-  )
+    return (
+      <div>
+        <List>
+          {items.map(item => (
+            <TodoListItem key={item.id} item={item} />
+          ))}
+        </List>
+        <AddTodoListItem />
+      </div>
+    )
+  }
 }
+
+export default connect(state => ({
+  items: state.items
+}))(TodoList)
