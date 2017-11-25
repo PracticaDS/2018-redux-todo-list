@@ -6,26 +6,32 @@ import CommentIcon from 'material-ui-icons/Comment'
 
 export default function TodoList(props) {
   const items = [
-    { id: 1, text: 'Ponerse las gotas para los ojos' },
-    { id: 2, text: 'Pedir turno con el médico' },
-    { id: 3, text: 'Arreglar la cocina' },
+    { id: 1, text: 'Ponerse las gotas para los ojos', listo: false  },
+    { id: 2, text: 'Pedir turno con el médico', listo: false },
+    { id: 3, text: 'Arreglar la cocina', listo: false },
   ]
 
   return (
     <div>
-        <List>
-          {items.map(item => (
-            <ListItem key={item.id} dense>
-              <Checkbox tabIndex={-1} disableRipple />
-              <ListItemText primary={item.text} />
-              <ListItemSecondaryAction>
-                <IconButton aria-label="Comments">
-                  <CommentIcon />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
-          ))}
-        </List>
-      </div>
+      <List>
+        {items.map(item => (
+          <TodoListItem key={item.id} item={item} />
+        ))}
+      </List>
+    </div>
+  )
+}
+
+function TodoListItem({ item }) {
+  return (
+    <ListItem dense>
+      <Checkbox tabIndex={-1} disableRipple />
+      <ListItemText primary={item.text} />
+      <ListItemSecondaryAction>
+        <IconButton aria-label="Comments">
+          <CommentIcon />
+        </IconButton>
+      </ListItemSecondaryAction>
+    </ListItem>
   )
 }
