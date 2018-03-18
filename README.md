@@ -2,6 +2,9 @@
 
 Clásico ejemplo inicial para aprender Redux.
 
+![screenshot](https://user-images.githubusercontent.com/4428120/37571683-b354df20-2ade-11e8-9137-db83254041bf.png)
+
+
 # Setup de Node
 
 Se requiere tener instalado node. Una buena forma es a través de [nvm](https://github.com/creationix/nvm) que permite tener varias versiones de node al mismo tiempo (similar a rvm para ruby).
