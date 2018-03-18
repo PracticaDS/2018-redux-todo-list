@@ -4,6 +4,6 @@ import { addItem } from '../actions/todo'
 
 export default connect(
   () => ({}),
-  ({ 
+  ({
     addItemAction: addItem
   })) (AddTodoListItem)
