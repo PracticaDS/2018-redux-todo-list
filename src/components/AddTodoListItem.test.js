@@ -10,10 +10,17 @@ configure({ adapter: new Adapter() })
 //
 
 it('renders without crashing', () => {
-  let calledWith
-  const add = text => { calledWith = text }
-
-  const wrapper = mount(<AddTodoListItem addItem={add}/>)
+  const wrapper = mount(<AddTodoListItem />)
 
   expect(wrapper.text()).toEqual('TextAgregar')
+})
+
+it('calls the add item on click', () => {
+  const addSpy = jest.fn();
+
+  const wrapper = mount(<AddTodoListItem addItemAction={addSpy}/>)
+
+  wrapper.find('button').simulate('click')
+
+  expect(addSpy).toHaveBeenCalledTimes(1)
 })
