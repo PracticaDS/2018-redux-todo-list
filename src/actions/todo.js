@@ -22,3 +22,15 @@ export const toggleDone = id => ({
   type: TOGGLE_DONE,
   id
 })
+
+// fetching
+
+export const LOAD_ITEMS = 'LOAD_ITEMS'
+const loadItems = items => ({ type: LOAD_ITEMS, items })
+
+export const FETCH_ITEMS = 'FETCH_ITEMS'
+export const fetchItems = () => async (dispatch) => {
+  const todos = await fetch('/todos')
+  const items = await todos.json()
+  dispatch(loadItems(items))
+}

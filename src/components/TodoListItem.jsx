@@ -6,7 +6,6 @@ import IconButton from 'material-ui/IconButton'
 import DeleteIcon from 'material-ui-icons/Delete'
 
 import { removeItem } from '../actions/todo'
-import AddTodoListItem from './AddTodoListItem';
 
 function TodoListItem({ item, removeItem }) {
   return (
