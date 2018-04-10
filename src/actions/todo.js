@@ -1,4 +1,4 @@
-
+import { compose } from 'ramda' 
 let i = 0
 
 export const ADD_ITEM = 'ADD_ITEM'
@@ -25,12 +25,18 @@ export const toggleDone = id => ({
 
 // fetching
 
+export const LOADING_ITEMS = 'LOADING_ITEMS'
+const loadingItems = () => ({ type: LOADING_ITEMS })
+
 export const LOAD_ITEMS = 'LOAD_ITEMS'
 const loadItems = items => ({ type: LOAD_ITEMS, items })
 
 export const FETCH_ITEMS = 'FETCH_ITEMS'
 export const fetchItems = () => async (dispatch) => {
+  dispatch(loadingItems())
+  
   const todos = await fetch('/todos')
   const items = await todos.json()
-  dispatch(loadItems(items))
+  
+  setTimeout(() => dispatch(loadItems(items)), 1500)
 }

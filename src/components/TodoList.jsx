@@ -14,10 +14,11 @@ class TodoList extends React.Component {
   }
   
   render() {
-    const { items } = this.props
+    const { items, loadingItems } = this.props
 
     return (
       <div>
+        {loadingItems && <div>Loading ... </div>}
         <List>
           {items.map(item => (
             <TodoListItem key={item.id} item={item} />
@@ -30,7 +31,8 @@ class TodoList extends React.Component {
 }
 
 export default connect(state => ({
-  items: state.items
+  items: state.items,
+  loadingItems: state.loadingItems
 }),
 {
   fetchItems

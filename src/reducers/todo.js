@@ -1,4 +1,4 @@
-import { ADD_ITEM, REMOVE_ITEM, TOGGLE_DONE, LOAD_ITEMS } from '../actions/todo'
+import { ADD_ITEM, REMOVE_ITEM, TOGGLE_DONE, LOAD_ITEMS, LOADING_ITEMS } from '../actions/todo'
 
 const initialState = {
   items: [],
@@ -6,9 +6,14 @@ const initialState = {
 
 export function todo(state = initialState, action) {
   switch (action.type) {
+    case LOADING_ITEMS: return {
+      ...state,
+      loadingItems: true
+    }
     case LOAD_ITEMS: return {
       ...state,
-      items: action.items
+      items: action.items,
+      loadingItems: false
     }
     case ADD_ITEM: return {
       ...state,
