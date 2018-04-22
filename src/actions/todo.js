@@ -1,27 +1,39 @@
-import { compose } from 'ramda' 
-let i = 0
+import { postWithJSONBody, deleteRequest, putRequestWithJSONBody } from './fetch-utils'
 
 export const ADD_ITEM = 'ADD_ITEM'
-export const addItem = text => ({
+export const localAddItem = item => ({
   type: ADD_ITEM,
-  item: { 
-    id: i++,
-    text,
-    done: false
-  }
+  item
 })
+export const addItem = text => async dispatch => {
+  const item = { text, done: false }
+  const response = await fetch('/todos', postWithJSONBody(item))
+  const r = await response.json()
+  dispatch(localAddItem(r.data))
+}
 
 export const REMOVE_ITEM = 'REMOVE_ITEM'
-export const removeItem = id => ({
+export const localRemoveItem = id => ({
   type: REMOVE_ITEM,
   id
 })
+export const removeItem = id => async dispatch => {
+  await fetch(`/todos/${id}`, deleteRequest())
+  dispatch(localRemoveItem(id))
+}
 
 export const TOGGLE_DONE = 'TOGGLE_DONE'
-export const toggleDone = id => ({
+export const localToggleDone = id => ({
   type: TOGGLE_DONE,
   id
 })
+export const toggleDone = id => async (dispatch, getState) => {
+  console.log('Toggling item', id)
+  const state = getState()
+  const item = state.items.find(_ => _.id === id)
+  await fetch(`/todos/${id}`, putRequestWithJSONBody({ ...item, done: !item.done }))
+  dispatch(localToggleDone(id))
+}
 
 // fetching
 

@@ -5,12 +5,12 @@ import Checkbox from 'material-ui/Checkbox'
 import IconButton from 'material-ui/IconButton'
 import DeleteIcon from 'material-ui-icons/Delete'
 
-import { removeItem } from '../actions/todo'
+import { removeItem, toggleDone } from '../actions/todo'
 
-function TodoListItem({ item, removeItem }) {
+function TodoListItem({ item, removeItem, toggleDone }) {
   return (
     <ListItem dense>
-      <Checkbox tabIndex={-1} disableRipple />
+      <Checkbox tabIndex={-1} disableRipple onChange={() => toggleDone(item.id)} defaultChecked={item.done} />
       <ListItemText primary={item.text} />
       <ListItemSecondaryAction>
         <IconButton aria-label="Delete">
@@ -23,6 +23,7 @@ function TodoListItem({ item, removeItem }) {
 
 export default connect(undefined, 
   ({
-    removeItem
+    removeItem,
+    toggleDone
   })
 )(TodoListItem)

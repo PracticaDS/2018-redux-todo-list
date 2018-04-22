@@ -1,5 +1,5 @@
 import { todo } from './todo'
-import { addItem, removeItem, toggleDone } from '../actions/todo'
+import { localAddItem as addItem, removeItem, toggleDone } from '../actions/todo'
 
 describe('todo reducer', () => {
 
@@ -10,7 +10,7 @@ describe('todo reducer', () => {
   })
 
   it('adds an an item', () => {
-    const action = addItem('ir al banio')
+    const action = addItem({ id: 0, text: 'ir al banio', done: false })
     expect(todo(undefined, action)).toEqual({
       items: [{ id: 0, text: 'ir al banio', done: false }],
     })
