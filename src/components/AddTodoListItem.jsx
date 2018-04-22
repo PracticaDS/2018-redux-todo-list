@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from 'material-ui/Button'
 import TextField from 'material-ui/TextField'
+import { when, propSatisfies, equals, pipe, tap } from 'ramda'
 
 export default class AddTodoListItem extends React.Component {
   
@@ -17,6 +18,9 @@ export default class AddTodoListItem extends React.Component {
           margin="normal"
           value={this.state.text}
           onChange={this.onChange}
+          onKeyPress={when(propSatisfies(equals('Enter'), 'key'),
+            pipe(tap(this.addItem), _ => _.preventDefault())
+          )}
         />
         <Button raised color="primary" onClick={this.addItem}>Agregar</Button>
       </div>
