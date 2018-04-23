@@ -21,6 +21,7 @@ export function todo(state = initialState, action) {
       ...state,
       items: state.items.concat(action.item)
     }
+    case ServerActionTypes.DELETED:
     case REMOVE_ITEM: return {
       ...state,
       items: state.items.filter(i => i.id !== action.id)

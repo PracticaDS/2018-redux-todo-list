@@ -1,6 +1,7 @@
 
 export const ServerActionTypes = {
-  UPDATED: 'UPDATED'
+  UPDATED: 'UPDATED',
+  DELETED: 'DELETED'
 }
 
 export const onData = data => dispatch => {
