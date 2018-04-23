@@ -17,6 +17,7 @@ export function todo(state = initialState, action) {
       items: action.items,
       loadingItems: false
     }
+    case ServerActionTypes.ADDED:
     case ADD_ITEM: return {
       ...state,
       items: state.items.concat(action.item)
