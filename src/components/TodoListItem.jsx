@@ -10,7 +10,7 @@ import { removeItem, toggleDone } from '../actions/todo'
 function TodoListItem({ item, removeItem, toggleDone }) {
   return (
     <ListItem dense>
-      <Checkbox tabIndex={-1} disableRipple onChange={() => toggleDone(item.id)} defaultChecked={item.done} />
+      <Checkbox tabIndex={-1} disableRipple onChange={() => toggleDone(item.id)} checked={item.done} />
       <ListItemText primary={item.text} />
       <ListItemSecondaryAction>
         <IconButton aria-label="Delete">
