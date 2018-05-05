@@ -21,7 +21,7 @@ class TodoList extends React.Component {
         {loadingItems && <div>Loading ... </div>}
         <List>
           {items.map(item => (
-            <TodoListItem key={item.id} item={item} />
+            <TodoListItem key={item._id} item={item} />
           ))}
         </List>
         <AddTodoListItem />

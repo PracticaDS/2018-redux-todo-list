@@ -21,11 +21,11 @@ export function todo(state = initialState, action) {
     }
     case REMOVE_ITEM: return {
       ...state,
-      items: state.items.filter(i => i.id !== action.id)
+      items: state.items.filter(i => i._id !== action.id)
     }
     case TOGGLE_DONE: return {
       ...state,
-      items: state.items.map(item => item.id === action.id ? ({ ...item, done: !item.done }) : item)
+      items: state.items.map(item => item._id === action.id ? ({ ...item, done: !item.done }) : item)
     }
     default: return state
   }

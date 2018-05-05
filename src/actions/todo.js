@@ -28,9 +28,8 @@ export const localToggleDone = id => ({
   id
 })
 export const toggleDone = id => async (dispatch, getState) => {
-  console.log('Toggling item', id)
   const state = getState()
-  const item = state.items.find(_ => _.id === id)
+  const item = state.items.find(_ => _._id === id)
   await fetch(`/todos/${id}`, putRequestWithJSONBody({ ...item, done: !item.done }))
   dispatch(localToggleDone(id))
 }
