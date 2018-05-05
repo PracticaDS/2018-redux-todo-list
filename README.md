@@ -53,5 +53,18 @@ Para levantar la aplicación ejecutamos
 yarn start
 ```
 
+# Versiones
+
+Tenemos varias "versiones" de la aplicacion en diferentes branches.
+Y algunas de ellas requieren también levantar el proyecto del backend que pueden encontrar en [https://github.com/PracticaDS/2018-redux-todo-list-backend](https://github.com/PracticaDS/2018-redux-todo-list-backend)
+
+Acá un cuadro para entender como ejecutar
+
+| Descripcion | Frontend branch | Backend branch |
+| ----------- | --------------- | -------------- |
+| Con Redux sin comunicación con el back |  `master`  |   ---  |
+| Idem a `master` + thunks y comunicación con el back para persistir. Este backend no persiste, sino que guarda todo en memoria (impl dummy) |  `fetch-con-backend` | `master` |
+| Idem al anterior solo que tiene unos pequeños ajustes para funcionar con el backend que persiste en mongo (`id` cambió a `_id`) | `fetch-con-backend-mongo` | `mongoose` |
+| Idem a `fetch-con-backend` pero además utiliza websockets para recibir eventos en real-time cuando otros usuarios modifican el estado | `websockets` | `websockets` |
 
 
