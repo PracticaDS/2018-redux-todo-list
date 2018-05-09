@@ -1,4 +1,4 @@
-import { postWithJSONBody, deleteRequest, putRequestWithJSONBody } from './fetch-utils'
+import { isoFetch, postWithJSONBody, deleteRequest, putRequestWithJSONBody } from './fetch-utils'
 
 export const ADD_ITEM = 'ADD_ITEM'
 export const localAddItem = item => ({
@@ -7,7 +7,7 @@ export const localAddItem = item => ({
 })
 export const addItem = text => async dispatch => {
   const item = { text, done: false }
-  const response = await fetch('/todos', postWithJSONBody(item))
+  const response = await isoFetch('/todos', postWithJSONBody(item))
   const r = await response.json()
   dispatch(localAddItem(r.data))
 }
@@ -18,7 +18,7 @@ export const localRemoveItem = id => ({
   id
 })
 export const removeItem = id => async dispatch => {
-  await fetch(`/todos/${id}`, deleteRequest())
+  await isoFetch(`/todos/${id}`, deleteRequest())
   dispatch(localRemoveItem(id))
 }
 
@@ -30,7 +30,7 @@ export const localToggleDone = id => ({
 export const toggleDone = id => async (dispatch, getState) => {
   const state = getState()
   const item = state.items.find(_ => _._id === id)
-  await fetch(`/todos/${id}`, putRequestWithJSONBody({ ...item, done: !item.done }))
+  await isoFetch(`/todos/${id}`, putRequestWithJSONBody({ ...item, done: !item.done }))
   dispatch(localToggleDone(id))
 }
 
@@ -39,15 +39,24 @@ export const toggleDone = id => async (dispatch, getState) => {
 export const LOADING_ITEMS = 'LOADING_ITEMS'
 const loadingItems = () => ({ type: LOADING_ITEMS })
 
-export const LOAD_ITEMS = 'LOAD_ITEMS'
+export const LOAD_ITEMS = 'LOADED_ITEMS'
 const loadItems = items => ({ type: LOAD_ITEMS, items })
 
+export const ERROR_LOADING_ITEMS = 'ERROR_LOADING_ITEMS'
+const errorLoading = error => ({ type: ERROR_LOADING_ITEMS, error })
+
 export const FETCH_ITEMS = 'FETCH_ITEMS'
-export const fetchItems = () => async (dispatch) => {
+export const fetchItems = () => async dispatch => {
   dispatch(loadingItems())
-  
-  const todos = await fetch('/todos')
-  const items = await todos.json()
-  
-  setTimeout(() => dispatch(loadItems(items)), 1500)
+  try {
+    const response = await isoFetch('/todos')
+    if (response.status !== 200) {
+      dispatch(errorLoading(`Server error ${response.status}`))
+    } else {
+      const json = await response.json()
+      dispatch(loadItems(json.data))
+    }
+  } catch (err) {
+    dispatch(errorLoading(err))
+  }
 }
