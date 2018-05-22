@@ -18,9 +18,9 @@ class TodoList extends React.Component {
 
     return (
       <div>
-        {loadingItems && <div>Loading ... </div>}
+        { loadingItems && <div>Loading ... </div> }
         <List>
-          {items.map(item => (
+          { items.map(item => (
             <TodoListItem key={item._id} item={item} />
           ))}
         </List>

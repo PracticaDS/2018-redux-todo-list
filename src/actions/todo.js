@@ -54,7 +54,7 @@ export const fetchItems = () => async dispatch => {
       dispatch(errorLoading(`Server error ${response.status}`))
     } else {
       const json = await response.json()
-      dispatch(loadItems(json.data))
+      dispatch(loadItems(json))
     }
   } catch (err) {
     dispatch(errorLoading(err))
