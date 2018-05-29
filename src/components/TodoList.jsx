@@ -14,14 +14,16 @@ class TodoList extends React.Component {
   }
   
   render() {
-    const { items, loadingItems } = this.props
+    const { items, loadingItems, error } = this.props
 
     return (
       <div>
         { loadingItems && <div>Loading ... </div> }
-        <List>
+        { error && <div className="errors">{error}</div> }
+        
+        <List className="todoList">
           { items.map(item => (
-            <TodoListItem key={item._id} item={item} />
+            <TodoListItem key={item._id} id="listaTodos" item={item} />
           ))}
         </List>
         <AddTodoListItem />
@@ -32,6 +34,7 @@ class TodoList extends React.Component {
 
 export default connect(state => ({
   items: state.items,
+  error: state.error,
   loadingItems: state.loadingItems
 }),
 {

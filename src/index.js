@@ -8,13 +8,18 @@ import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import { todo } from './reducers/todo'
 
+const doCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const store = createStore(
   todo,
-  compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  doCompose(
+    applyMiddleware(thunk)
   )
 )
+
+if (window.Cypress) { // eslint-disable-line no-undef
+  window.cypressStore = store;
+}
 
 const root = (
   <Provider store={store}>
