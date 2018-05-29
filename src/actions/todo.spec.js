@@ -17,10 +17,7 @@ describe('todo actions', () => {
     it('dispara LOADING y luego LOADED con los items que recibe del server', async () => {
       nock(TEST_URL)
         .get('/todos')
-        .reply(200, {
-          status: 'ok', 
-          data: [{ id: 1, text: 'hola' }]
-        })
+        .reply(200, [{ id: 1, text: 'hola' }])
       
       const store = mockStore()
       
