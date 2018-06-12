@@ -16,6 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:docker": "docker build -t todo-list-front .",
     "debug-test": "DEBUG=nock.* react-scripts test --env=jsdom",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

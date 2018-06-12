@@ -19,7 +19,7 @@ class TodoList extends React.Component {
     return (
       <div>
         { loadingItems && <div>Loading ... </div> }
-        { error && <div className="errors">{error}</div> }
+        { error && <div className="errors">{JSON.stringify(error)}</div> }
         
         <List className="todoList">
           { items.map(item => (
