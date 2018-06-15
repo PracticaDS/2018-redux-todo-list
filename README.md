@@ -66,5 +66,6 @@ Acá un cuadro para entender como ejecutar
 | Idem a `master` + thunks y comunicación con el back para persistir. Este backend no persiste, sino que guarda todo en memoria (impl dummy) |  `fetch-con-backend` | `master` |
 | Idem al anterior solo que tiene unos pequeños ajustes para funcionar con el backend que persiste en mongo (`id` cambió a `_id`) | `fetch-con-backend-mongo` | `mongoose` |
 | Idem a `fetch-con-backend` pero además utiliza websockets para recibir eventos en real-time cuando otros usuarios modifican el estado | `websockets` | `websockets` |
+| Idem a `fetch-con-backend` pero totalmente dockerizado (Ver tambien el repo `2018-redux-todo-list-compose`) | `dockerized` | `dockerized` |
 
 
