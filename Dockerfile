@@ -1,6 +1,7 @@
 FROM node:9-alpine
 
-RUN npm install --global yarn
+# this makes the build fail in travis ! see https://github.com/nodejs/docker-node/issues/661
+# RUN npm install --global yarn
 
 COPY package.json .
 COPY yarn.lock .
