@@ -12,7 +12,7 @@ before_install:
 script:
   - yarn test
   - yarn build
-  - build:docker
+  - yarn build:docker
 
 deploy:
   provider: script
