@@ -11,7 +11,7 @@ export function todo(state = initialState, action) {
       loadingItems: true,
       error: undefined
     }
-    case ERROR_LOADING_ITEMS: return  {
+    case ERROR_LOADING_ITEMS: return {
       ... state,
       loadingItems: false,
       error: action.error 
