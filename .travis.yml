@@ -7,16 +7,20 @@ services:
 
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo "$HEROKU_PASSWORD" | docker login -u "$HEROKU_USERNAME" --password-stdin registry.heroku.com
   - yarn install
 
 script:
   - yarn test
   - yarn build
   - yarn build:docker
+  - docker tag unqpdes/todo-list-front registry.heroku.com/pdes-2018-todo-list-front/web .
 
 deploy:
   provider: script
-  script: docker push unqpdes/todo-list-front
+  script: 
+    docker push unqpdes/todo-list-front;
+    docker push registry.heroku.com/pdes-2018-todo-list-front/web
   on:
     branch: dockerized
 
