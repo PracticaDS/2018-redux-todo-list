@@ -6,12 +6,16 @@ services:
   - docker
 
 before_install:
+  # login to docker registry (requires env vars in travis)
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+install:
   - yarn install
 
 script:
   - yarn test
   - yarn build
+  # build docker image
   - yarn build:docker
 
 deploy:
