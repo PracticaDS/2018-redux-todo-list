@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/PracticaDS/2018-redux-todo-list.svg?branch=master)](https://travis-ci.org/PracticaDS/2018-redux-todo-list)
 # TodoList Redux
 
 Clásico ejemplo inicial para aprender Redux.
