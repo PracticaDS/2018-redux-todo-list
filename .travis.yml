@@ -14,7 +14,7 @@ script:
   - yarn test
   - yarn build
   - yarn build:docker
-  - docker tag unqpdes/todo-list-front registry.heroku.com/pdes-2018-todo-list-front/web .
+  - docker tag unqpdes/todo-list-front:latest registry.heroku.com/pdes-2018-todo-list-front/web
 
 deploy:
   provider: script
