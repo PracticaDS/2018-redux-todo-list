@@ -8,7 +8,7 @@ services:
 before_install:
   # install heroku CLI
   - wget -qO- https://toolbelt.heroku.com/install.sh | sh
-  - /usr/local/heroku/bin/heroku plugins:install heroku-container-registry
+  # - /usr/local/heroku/bin/heroku plugins:install heroku-container-registry
   # login to docker registries (dockerhub + heroku)
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - echo "$HEROKU_PASSWORD" | docker login -u "$HEROKU_USERNAME" --password-stdin registry.heroku.com
@@ -30,7 +30,7 @@ deploy:
     # push to dockerhub + heroku
     docker push unqpdes/todo-list-front;
     docker push registry.heroku.com/pdes-2018-todo-list-front/web;
-    /usr/local/heroku/bin/heroku heroku container:release web
+    /usr/local/heroku/bin/heroku container:release web
   on:
     branch: dockerized
 
