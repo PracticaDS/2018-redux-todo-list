@@ -26,9 +26,8 @@ script:
 deploy:
   provider: script
   script: 
-    # push to dockerhub
+    # push to dockerhub & heroku
     docker push unqpdes/todo-list-front;
-    # push & release in heroku
     docker push registry.heroku.com/pdes-2018-todo-list-front/web;
     heroku container:release web --app pdes-2018-todo-list-front
   on:
