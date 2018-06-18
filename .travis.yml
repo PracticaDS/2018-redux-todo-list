@@ -30,7 +30,7 @@ deploy:
     # push to dockerhub + heroku
     docker push unqpdes/todo-list-front;
     docker push registry.heroku.com/pdes-2018-todo-list-front/web;
-    /usr/local/heroku/bin/heroku container:release web
+    /usr/local/heroku/bin/heroku container:release web --app pdes-2018-todo-list-front
   on:
     branch: dockerized
 
